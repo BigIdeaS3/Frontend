@@ -2,21 +2,28 @@
  <head>
   <meta charset='utf-8'/>
   	<link rel="stylesheet" href="css/style.css">
+<script>
+var background = new Image();
+background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
 
+background.onload = function(){
+    ctx.drawImage(background,0,0);   
+}
+</script>
  </head>
  <body>
   <div class= 'game'>
   <div id = 'home'>
-    <canvas id='mycanvas' width='350' height='350'>
+    <canvas id='mycanvas' width='782' height='676'>
     </canvas>
     </div>
-    <p>Press start</p>
-    <button id='btn'>START</button>
+    <p>Druk op start om te beginnen</p>
+    <button id='btn'>Start</button>
   </div>
 
   <script src="js/setting.js"></script>
   <script src="js/draw.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/movement.js"></script>
  </body>
 
 </html>

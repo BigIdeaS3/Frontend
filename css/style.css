@@ -1,9 +1,9 @@
 #home {
-      width: 350px;
-      height: 350px;
-      background-size: auto 350px;
+      width: 782;
+      height: 676;
+      background-size: auto 500px;
       background-repeat: no-repeat;
-      background-color: black;
+      background-image: "img/bar.png";
       background-position: center center;
       padding: 0;
       margin: 03;
@@ -39,4 +39,3 @@
     .game {
       margin: 0 auto;
     }
-

@@ -8,7 +8,7 @@ var drawModule = (function () {
         ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
   }
 
-  var pizza = function(x, y) {
+  var drink = function(x, y) {
         ctx.fillStyle = 'yellow';
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
         ctx.fillStyle = 'red';
@@ -31,10 +31,14 @@ var drawModule = (function () {
   }
     
   var paint = function(){
-      ctx.fillStyle = 'black';
-      ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = 'black';
-      ctx.strokeRect(0, 0, w, h);
+      var background = new Image();
+      background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
+      ctx.drawImage(background,0,0,w,h);
+      // void ctx.scale(2, 2); RIP
+      // ctx.fillStyle = 'black';
+      // ctx.fillRect(0, 0, w, h);
+      // ctx.strokeStyle = 'white';
+      // ctx.strokeRect(0, 0, w, h);
 
       btn.setAttribute('disabled', true);
 
@@ -76,7 +80,7 @@ var drawModule = (function () {
           bodySnake(snake[i].x, snake[i].y);
         } 
         
-        pizza(food.x, food.y); 
+        drink(food.x, food.y); 
         scoreText();
   }
 
@@ -109,7 +113,7 @@ var drawModule = (function () {
       direction = 'down';
       drawSnake();
       createFood();
-      gameloop = setInterval(paint, 80);
+      gameloop = setInterval(paint, 100);
   }
 
 
