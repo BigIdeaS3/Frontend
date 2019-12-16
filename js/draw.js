@@ -1,5 +1,10 @@
 
-var drawModule = (function () { 
+var drawModule = (function () {
+
+  var background = new Image();
+      background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
+  var backgroundgif = new Image();
+      backgroundgif.src = "https://media.discordapp.net/attachments/605158966455959572/654847842543730713/giphy_2.gif";
 
   var bodySnake = function(x, y) {
         ctx.fillStyle = 'green';
@@ -31,10 +36,7 @@ var drawModule = (function () {
   }
     
   var paint = function(){
-      var background = new Image();
-      background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
-      ctx.drawImage(background,0,0,w,h);
-      // void ctx.scale(2, 2); RIP
+        ctx.drawImage(background, 0, 0, w, h);
       // ctx.fillStyle = 'black';
       // ctx.fillRect(0, 0, w, h);
       // ctx.strokeStyle = 'white';
@@ -57,8 +59,8 @@ var drawModule = (function () {
       if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
           //restart game
           btn.removeAttribute('disabled', true);
-
-          ctx.clearRect(0,0,w,h);
+          ctx.drawImage(backgroundgif,0,0,w,h);
+          // ctx.clearRect(0,0,w,h);
           gameloop = clearInterval(gameloop);
           return;          
         }
@@ -69,12 +71,12 @@ var drawModule = (function () {
           
           createFood(); //Create new food
         } else {
-          var tail = snake.pop(); //pops out the last cell
+          var tail = snake.pop(); 
           tail.x = snakeX; 
           tail.y = snakeY;
         }
-        //The snake can now eat the food.
-        snake.unshift(tail); //puts back the tail as the first cell
+      
+        snake.unshift(tail);
 
         for(var i = 0; i < snake.length; i++) {
           bodySnake(snake[i].x, snake[i].y);
