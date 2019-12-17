@@ -52,19 +52,19 @@ var drawModule = (function () {
       // else if (score > 7){
       //   ctx.drawImage(backgroundbar3,0,0,w,h)
       // }
-      score = bgscore1;
-      var score = "0"
-      switch(score) {
-        case 1:
-          ctx.drawImage(backgroundbar1,0,0,w,h)
-          break;
-        case 2:
-          ctx.drawImage(backgroundbar2,0,0,w,h)
-          break;
-        case 3:
-          ctx.drawImage(backgroundbar2,0,0,w,h)
-          break;
-      }
+      // score = bgscore1;
+      // var score = "0"
+      // switch(score) {
+      //   case 1:
+      //     ctx.drawImage(backgroundbar1,0,0,w,h)
+      //     break;
+      //   case 2:
+      //     ctx.drawImage(backgroundbar2,0,0,w,h)
+      //     break;
+      //   case 3:
+      //     ctx.drawImage(backgroundbar2,0,0,w,h)
+      //     break;
+      // }
 
   }
     

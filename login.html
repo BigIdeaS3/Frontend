@@ -1,0 +1,25 @@
+<html>
+    <head>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script></head>
+    <body>
+        <div id="Login">
+            <form action="javascript:login()">
+                <input type="text" id="usernameLogin" placeholder="Username/email">
+                <input type="password" name="password" id="passwordLogin" placeholder="Password">
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div id="Register">
+            <form action="javascript:register()">
+                <input type="text" name="username" id="usernameRegister">
+                <input type="text" name="email" id="email">
+                <input type="password" name="password" id="passwordRegister">
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </body>
+    <script src="js/rest.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+</html>
