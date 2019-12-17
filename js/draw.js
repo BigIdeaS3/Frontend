@@ -1,10 +1,18 @@
 
 var drawModule = (function () {
 
-  var background = new Image();
+  var background = new Image(); //playfield screen
       background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
-  var backgroundgif = new Image();
-      backgroundgif.src = "https://media.discordapp.net/attachments/605158966455959572/654847842543730713/giphy_2.gif";
+  var backgroundGameOver = new Image(); //gameover screen
+      backgroundGameOver.src = "https://media.discordapp.net/attachments/605158966455959572/656272876239978546/game_over_the_best.png";
+  var backgroundbar1 = new Image();
+      backgroundbar1.src = "https://media.discordapp.net/attachments/605158966455959572/656277363281100810/abi-merrell-bar-background.png";
+  var backgroundbar2 = new Image();
+      backgroundbar2.src = "https://media.discordapp.net/attachments/605158966455959572/656276563385384970/2.png";
+  var backgroundbar3 = new Image();
+      backgroundbar3.src = "https://cdn.discordapp.com/attachments/605158966455959572/656276584444985358/3.png";
+
+ 
 
   var bodySnake = function(x, y) {
         ctx.fillStyle = 'green';
@@ -34,6 +42,31 @@ var drawModule = (function () {
           snake.push({x:i, y:0});
       }  
   }
+  var bgscore1 = null;
+
+  var bgscore = function(){
+      //  if(score >= 3){
+      // ctx.drawImage(backgroundbar1,0,0,w,h)}
+      // else if(score > 5){
+      //   ctx.drawImage(backgroundbar2,0,0,w,h)}
+      // else if (score > 7){
+      //   ctx.drawImage(backgroundbar3,0,0,w,h)
+      // }
+      score = bgscore1;
+      var score = "0"
+      switch(score) {
+        case 1:
+          ctx.drawImage(backgroundbar1,0,0,w,h)
+          break;
+        case 2:
+          ctx.drawImage(backgroundbar2,0,0,w,h)
+          break;
+        case 3:
+          ctx.drawImage(backgroundbar2,0,0,w,h)
+          break;
+      }
+
+  }
     
   var paint = function(){
         ctx.drawImage(background, 0, 0, w, h);
@@ -56,10 +89,12 @@ var drawModule = (function () {
       } else if(direction == 'down') { 
         snakeY++; }
 
+      
+
       if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
           //restart game
           btn.removeAttribute('disabled', true);
-          ctx.drawImage(backgroundgif,0,0,w,h);
+          ctx.drawImage(backgroundGameOver,0,0,w,h);
           // ctx.clearRect(0,0,w,h);
           gameloop = clearInterval(gameloop);
           return;          
@@ -68,7 +103,8 @@ var drawModule = (function () {
         if(snakeX == food.x && snakeY == food.y) {
           var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
           score ++;
-          
+          bgscore1++;
+          // bgscore();
           createFood(); //Create new food
         } else {
           var tail = snake.pop(); 
