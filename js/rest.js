@@ -20,7 +20,7 @@ async function login() {
     var result = await call.json();
     if (result.username !== null && result.email !== null && result.username !== undefined && result.email !== undefined){
         name = result.username;
-        location.href = "C:\Users\rener\Desktop\Snake\Frontend\login.html"
+        location.pathname = "C:\\Users\\rener\\Desktop\\snake\\Frontend\\lobby.html"
     }
 }
 
@@ -46,6 +46,7 @@ async function register() {
     console.log( await call.json())
     if (result.username !== null && result.email !== null && result.username !== undefined && result.email !== undefined){
         name = result.username;
-        location.href = "C:\Users\rener\Desktop\Snake\Frontend\login.html"
+        location.href = 'C:\Users\rener\Desktop\snake\Frontend\login.html'
     }
 }
+

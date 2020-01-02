@@ -1,7 +1,7 @@
 var stompClient;
 
 function connect() {
-    var socket = new SockJS('http://localhost:9000/SnakeMP')
+    var socket = new SockJS('http://localhost:9000/Snake')
     stompClient = Stomp.over(socket)
     stompClient.connect({}, function(frame) {
         stompClient.subscribe('/topic/lobbies', function(message) {

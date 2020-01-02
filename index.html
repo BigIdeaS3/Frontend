@@ -11,7 +11,7 @@ background.onload = function(){
 }
 </script>
  </head>
- <body>
+ <body onload="connect()">
   <div class= 'game'>
   <div id = 'home'>
     <canvas id='mycanvas' width='650' height='650'>
@@ -21,6 +21,7 @@ background.onload = function(){
     <button id='btn'>Start</button>
   </div>
 
+  <script src="js/socket.js"></script>
   <script src="js/setting.js"></script>
   <script src="js/draw.js"></script>
   <script src="js/movement.js"></script>
