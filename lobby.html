@@ -1,17 +1,21 @@
 <html>
-    <head>
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script></head>
-    <body onload="connect()">
+    <head>            
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script></head>
+    </head>
+    <body onload="getLobbyId()">
         <div >
-            <table id="lobbies">
+            <table id="users">
                 <th>
-                    <td>Lobby name</td><td>Connected players</td><td>Connect</td>
+                    <td>Users:</td>
                 </th>
             </table><br>
-            <button onclick="createLobby()">Create Lobby</button>
+            <button onclick="startGame()">Start Game</button>
         </div>
+
+
+        <script src="js/lobby.js"></script>
+        <script src="js/lobbyfinder.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
     </body>
-    <script src="js/lobby.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 </html>

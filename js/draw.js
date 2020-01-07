@@ -42,31 +42,6 @@ var drawModule = (function () {
           snake.push({x:i, y:0});
       }  
   }
-  var bgscore1 = null;
-
-  var bgscore = function(){
-      //  if(score >= 3){
-      // ctx.drawImage(backgroundbar1,0,0,w,h)}
-      // else if(score > 5){
-      //   ctx.drawImage(backgroundbar2,0,0,w,h)}
-      // else if (score > 7){
-      //   ctx.drawImage(backgroundbar3,0,0,w,h)
-      // }
-      // score = bgscore1;
-      // var score = "0"
-      // switch(score) {
-      //   case 1:
-      //     ctx.drawImage(backgroundbar1,0,0,w,h)
-      //     break;
-      //   case 2:
-      //     ctx.drawImage(backgroundbar2,0,0,w,h)
-      //     break;
-      //   case 3:
-      //     ctx.drawImage(backgroundbar2,0,0,w,h)
-      //     break;
-      // }
-
-  }
     
   var paint = function(){
         ctx.drawImage(background, 0, 0, w, h);
@@ -103,8 +78,6 @@ var drawModule = (function () {
         if(snakeX == food.x && snakeY == food.y) {
           var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
           score ++;
-          bgscore1++;
-          // bgscore();
           createFood(); //Create new food
         } else {
           var tail = snake.pop(); 
