@@ -1,6 +1,29 @@
 
+
+
 var drawModule = (function () {
 
+	var url = new URL(window.location);
+	var gameId = url.searchParams.get("id")
+	
+	var socket = new SockJS('http://localhost:9000/Snake')
+	stompClient = Stomp.over(socket)
+	stompClient.connect({}, function(frame) {
+	
+		console.log(gameId)
+	
+		stompClient.subscribe('/topic/game/'+gameId, function(message) {
+			var msg = JSON.parse(message.body);
+			if (msg.type == "DRAW") {
+				console.log(msg.message)
+				paint()
+				for (let i = 0; i < msg.message.length; i++) {
+					const element = msg.message[i];
+					  bodySnake(element.x, element.y);
+				}
+			}
+		})
+	})
   var background = new Image(); //playfield screen
       background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
   var backgroundGameOver = new Image(); //gameover screen
@@ -41,10 +64,20 @@ var drawModule = (function () {
       for (var i = length-1; i>=0; i--) {
           snake.push({x:i, y:0});
       }  
+
+      console.log(snake)
   }
     
   var paint = function(){
-        ctx.drawImage(background, 0, 0, w, h);
+		ctx.drawImage(background, 0, 0, w, h);
+		
+		
+        
+        drink(food.x, food.y); 
+		scoreText();
+  }
+
+  var move = function() {
       // ctx.fillStyle = 'black';
       // ctx.fillRect(0, 0, w, h);
       // ctx.strokeStyle = 'white';
@@ -86,13 +119,19 @@ var drawModule = (function () {
         }
       
         snake.unshift(tail);
+        //alert(JSON.stringify(snake))
 
-        for(var i = 0; i < snake.length; i++) {
-          bodySnake(snake[i].x, snake[i].y);
-        } 
-        
-        drink(food.x, food.y); 
-        scoreText();
+		//TODO: make draw call to server
+		
+		
+
+		//console.log(JSON.stringify(snake))
+
+		stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"DRAW",'message':snake}))
+
+        // for(var i = 0; i < snake.length; i++) {
+        //   bodySnake(snake[i].x, snake[i].y);
+        // } 
   }
 
   var createFood = function() {
@@ -124,7 +163,7 @@ var drawModule = (function () {
       direction = 'down';
       drawSnake();
       createFood();
-      gameloop = setInterval(paint, 100);
+      gameloop = setInterval(move, 100);
   }
 
 

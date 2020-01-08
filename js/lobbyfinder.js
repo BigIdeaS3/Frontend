@@ -55,6 +55,8 @@ function addLobbytoTable(lobby) {
 
     var rows = table.tBodies[0].rows.length;
 
+    console.log(lobby)
+
         
     var row = table.insertRow(rows);
     row.insertCell(0)
@@ -89,7 +91,7 @@ function join(gameId) {
         if(msg.type == "JOIN") {
             if (Array.isArray(msg.message)) {
                 gameConn.unsubscribe();
-                location.href = "lobby.html?id="+split[1]
+                location.href = "lobby.html?id="+split[3]
             } else {
                 alert ("You already joined this lobby")
             }

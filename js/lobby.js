@@ -1,61 +1,59 @@
+var gameId;
 var stompClient;
 
-function connect() {
+function getLobbyId() {
+    var url = new URL(window.location)
+    gameId = url.searchParams.get("id")
+    console.log(gameId)
+
+    listenToServer(gameId)
+}
+
+function listenToServer(gameId) {
     var socket = new SockJS('http://localhost:9000/Snake')
     stompClient = Stomp.over(socket)
     stompClient.connect({}, function(frame) {
-        stompClient.subscribe('/topic/lobbies', function(message) {
+        var gameConn = stompClient.subscribe("/topic/game/"+gameId, function(message) {
             var msg = JSON.parse(message.body)
-            if(msg.type == "CONNECT") {
-                console.log(msg.message)
-                
-                addLobbiesToTable(msg.message)
-            } else if (msg.type == "CREATE") {
-                addLobbiesToTable(msg.message)
+            console.log(msg)
+            if (msg.type == "JOIN" || msg.type == "GETALLPLAYERS") {
+                addUsersToTable(msg.message)
+            } else if (msg.type == "STARTGAME") {
+                gameConn.unsubscribe()
+                if (msg.message.username == name) {
+                    location.href = "index.html?id="+gameId;
+                } else {
+                    location.href = "index.html?id="+gameId;
+                }
             }
         })
-        stompClient.send('/app/lobbies',{},JSON.stringify({'type':'CONNECT','message':''}))
+        getAllUsers();
+
     })
 }
 
-function addLobbiesToTable(lobbies) {
-    var table = document.getElementById('lobbies');
+function getAllUsers() {
+    stompClient.send("/app/game/"+gameId, {}, JSON.stringify({'type':"GETALLPLAYERS",'message':""}));
+}
 
-    for (let i = lobbies.length; i > 0; i--) {
-        const element = lobbies[i];
+function addUsersToTable(users) {
+    var table = document.getElementById('users');
+
+    $("#users").find("tr:not(:first)").remove();
+
+    for (let i = 0; i < users.length; i++) {
+        const element = users[i];
+        
+        console.log(users)
         
         var row = table.insertRow(1);
         row.insertCell(0)
-        var cName = row.insertCell(1)
-        var cCount = row.insertCell(2)
-        var cConnect = row.insertCell(3)
+        var cUser = row.insertCell(1)
 
-        cName.innerHTML = "Lobby " + i;
-        cCount.innerHTML = lobbies[i-1].connectedPlayers.length;
-
-        var btn = document.createElement('input')
-        btn.type = "button";
-        btn.className = "connect"
-        btn.value = "Connect to lobby " + i
-        btn.onclick = (function(i) {return function() {join(i);}})(i);
-
-        cConnect.appendChild(btn)
+        cUser.innerHTML = element.username;
     }
 }
 
-function join(gameId) {
-    gameId = gameId -1
-    console.log("/app/game/"+gameId)
-
-
-    stompClient.subscribe("/app/game/"+gameId, function(message) {
-        var msg = JSON.parse(message.body);
-        console.log(msg)
-    })
-
-    stompClient.send("/app/game/"+gameId,{}, JSON.stringify({'type':"JOIN",'message':name}))
-}
-
-function createLobby() {
-    stompClient.send("/app/lobbies",{},JSON.stringify({'type':'CREATE','message':name}))
+function startGame() {
+    stompClient.send("/app/game/"+gameId,{}, JSON.stringify({'type':"STARTGAME","message":name}))
 }
