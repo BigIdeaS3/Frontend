@@ -70,10 +70,7 @@ var drawModule = (function () {
     
   var paint = function(){
 		ctx.drawImage(background, 0, 0, w, h);
-		
-		
-        
-        drink(food.x, food.y); 
+		drink(food.x, food.y); 
 		scoreText();
   }
 
@@ -122,12 +119,12 @@ var drawModule = (function () {
         //alert(JSON.stringify(snake))
 
 		//TODO: make draw call to server
-		
-		
+        
+        // console.log(JSON.stringify(food))
+        
+        stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"DRAW",'message':snake}))
 
-		//console.log(JSON.stringify(snake))
-
-		stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"DRAW",'message':snake}))
+        // stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"DRAW",'message':food}))
 
         // for(var i = 0; i < snake.length; i++) {
         //   bodySnake(snake[i].x, snake[i].y);
