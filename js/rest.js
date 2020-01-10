@@ -19,6 +19,11 @@ async function login() {
 
     var result = await call.json();
     if (result.username !== null && result.email !== null && result.username !== undefined && result.email !== undefined){
+
+        alert(JSON.stringify(result))
+
+        localStorage.setItem("user", JSON.stringify(result))
+
         name = result.username;        
         location.href = 'lobbyfinder.html'
     }

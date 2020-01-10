@@ -55,5 +55,5 @@ function addUsersToTable(users) {
 }
 
 function startGame() {
-    stompClient.send("/app/game/"+gameId,{}, JSON.stringify({'type':"STARTGAME","message":name}))
+    location.href = "index.html?id=" + gameId;
 }
