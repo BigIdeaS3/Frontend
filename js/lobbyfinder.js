@@ -89,7 +89,7 @@ function join(gameId) {
         console.log(split)
 
         if(msg.type == "JOIN") {
-            if (Array.isArray(msg.message)) {
+            if (msg.message !== null) {
                 gameConn.unsubscribe();
                 location.href = "lobby.html?id="+split[3]
             } else {

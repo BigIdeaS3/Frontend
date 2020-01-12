@@ -50,7 +50,7 @@ function addUsersToTable(users) {
         row.insertCell(0)
         var cUser = row.insertCell(1)
 
-        cUser.innerHTML = element.username;
+        cUser.innerHTML = element.player.username;
     }
 }
 

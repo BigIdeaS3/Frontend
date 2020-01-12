@@ -22,7 +22,7 @@ async function login() {
 
         alert(JSON.stringify(result))
 
-        localStorage.setItem("user", JSON.stringify(result))
+        sessionStorage.setItem("user", JSON.stringify(result))
 
         name = result.username;        
         location.href = 'lobbyfinder.html'
