@@ -1,0 +1,39 @@
+.backgroundlogin{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666036830931517473/start_scherm_login.png");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .backgroundregister{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666036607459131422/start_scherm_create_new_scherm_.png");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .backgroundlobby{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666034056894480384/lobby.png");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .backgroundfindlobby{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666033762538356736/find_lobby.png");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .backgroundgame{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666030344130134036/start_scherm_DRUNK_SNAKE_snake.png");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

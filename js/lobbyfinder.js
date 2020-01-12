@@ -31,10 +31,9 @@ function addLobbiesToTable(lobbies) {
         const element = lobbies[i];
         
         var row = table.insertRow(1);
-        row.insertCell(0)
-        var cName = row.insertCell(1)
-        var cCount = row.insertCell(2)
-        var cConnect = row.insertCell(3)
+        var cName = row.insertCell(0)
+        var cCount = row.insertCell(1)
+        var cConnect = row.insertCell(2)
 
         cName.innerHTML = "Lobby " + i;
         cCount.innerHTML = lobbies[i-1].connectedPlayers.length;
@@ -59,10 +58,9 @@ function addLobbytoTable(lobby) {
 
         
     var row = table.insertRow(rows);
-    row.insertCell(0)
-    var cName = row.insertCell(1)
-    var cCount = row.insertCell(2)
-    var cConnect = row.insertCell(3)
+    var cName = row.insertCell(0)
+    var cCount = row.insertCell(1)
+    var cConnect = row.insertCell(2)
 
     cName.innerHTML = "Lobby " + rows;
     cCount.innerHTML = lobby.connectedPlayers.length;

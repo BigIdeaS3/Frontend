@@ -1,14 +1,19 @@
 <html>
+    <link rel="stylesheet"  href="css/style.css">
+    <link rel="stylesheet"  href="css/background.css">
     <head>
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script></head>
-    <body onload="connect()">
+    <body onload="connect()" class="backgroundfindlobby">
         <div >
-            <table id="lobbies">
-                <th>
-                    <td>Lobby name</td><td>Connected players</td><td>Connect</td>
-                </th>
-            </table><br>
-            <button onclick="createLobby()">Create Lobby</button>
+            <table id="lobbies" class="lobbytable">
+                <tr>
+                    <th>Lobby</th>
+                    <th>Connected Players</th>
+                    <th>Connected</th>
+                </tr>
+            </table>
+            <br>
+            <input type="button" onclick="createLobby()" class="buttonregister"  value="Create new lobby" style="margin:0px auto; display:block;">
         </div>
     </body>
     <script src="js/lobbyfinder.js"></script>

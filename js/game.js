@@ -47,40 +47,6 @@ stompClient.connect({}, function(frame) {
         }
     })
     
-    // stompClient.subscribe('/topic/game/'+gameId, function(message) {
-    // 	var msg = JSON.parse(message.body);
-    // 	if (msg.type == "DRAW") {
-    // 		paint()
-    // 		snakes = []
-    // 		if(Array.isArray(msg.message) && !Array.isArray(msg.message[0])) {
-    // 			snakes.push(msg.message)
-    // 		} else if(Array.isArray(msg.message) && Array.isArray(msg.message[0])) {
-    // 			snakes = msg.message;
-    // 		}
-
-    // 		for (let i = 0; i < snakes.length; i++) {
-    // 			const snake = snakes[i];
-    // 			for (let j = 0; j < snake.length; j++) {
-    // 				const element = snake[j];
-    // 				bodySnake(element.x,element.y)
-    // 			}
-    // 		}
-
-
-    // 		// for (let i = 0; i < msg.message.length; i++) {
-    // 		// 	const ele = msg.message[i];
-    // 		// 	if (Array.isArray(ele)) {
-    // 		// 	snakes = ele;
-    // 		// 	for (let i = 0; i < snakes.length; i++) {
-    // 		// 		const element = snakes[i];
-    // 		// 			bodySnake(element.x, element.y);
-    // 		// 		}
-    // 		// 	} else {
-    // 		// 		bodySnake(ele.x, ele.y);
-    // 		// 	}
-    // 		// }
-    // 	}
-    // })
 })
 
 function move() {

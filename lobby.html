@@ -1,17 +1,18 @@
 <html>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"  href="css/background.css">
     <head>            
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script></head>
     </head>
-    <body onload="getLobbyId()">
+    <body onload="getLobbyId()" class="backgroundlobby">
         <div >
-            <table id="users">
-                <th>
-                    <td>Users:</td>
-                </th>
+            <table id="users" class="lobbytable">
+                <tr>
+                    <th>Connected Players</th>
+                </tr>
             </table><br>
-            <button onclick="startGame()">Start Game</button>
+            <input type="button" onclick="startGame()" class="buttonregister"  value="Start game" style="margin:0px auto; display:block;">
         </div>
-
 
         <script src="js/lobby.js"></script>
         <script src="js/lobbyfinder.js"></script>

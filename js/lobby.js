@@ -47,8 +47,7 @@ function addUsersToTable(users) {
         console.log(users)
         
         var row = table.insertRow(1);
-        row.insertCell(0)
-        var cUser = row.insertCell(1)
+        var cUser = row.insertCell(0)
 
         cUser.innerHTML = element.player.username;
     }

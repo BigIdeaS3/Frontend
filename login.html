@@ -1,27 +1,20 @@
 <html>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"  href="css/style.css">
+    <link rel="stylesheet"  href="css/background.css">
     <head>
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     </head>
-    <body>
-        <div id="Login">
+    <body class="backgroundlogin">
+        <div id="Login" class="center">
             <form action="javascript:login()">
                 <input type="text" id="usernameLogin" placeholder="Username/email">
                 <input type="password" name="password" id="passwordLogin" placeholder="Password">
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" class="buttonlogin">
             </form>
-        </div>
-        <div id="Register">
-            <form action="javascript:register()">
-                <input type="text" name="username" id="usernameRegister">
-                <input type="text" name="email" id="email">
-                <input type="password" name="password" id="passwordRegister">
-                <input type="submit" value="Register">
-            </form>
+            <input type="button" onclick="window.location.href='register.html'" class="buttonregister" value="Create new account">
         </div>
     </body>
     <script src="js/rest.js"></script>
-    <script src="js/socket.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 </html>
