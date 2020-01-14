@@ -154,6 +154,7 @@ function createFood() {
 
     stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"SETFOOD",'message':f}))
 
+    var food = f;
 
     drawFood();
 }
