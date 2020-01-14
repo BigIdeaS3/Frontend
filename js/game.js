@@ -80,7 +80,6 @@ function move() {
         return;          
     } if(snakeX == food.x && snakeY == food.y) {
         var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
-        score ++;
         createFood(); //Create new food
         drawFood(); 
     }
