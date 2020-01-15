@@ -39,7 +39,7 @@
   }
 
   .backgroundgamestart{
-    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666030344130134036/start_scherm_DRUNK_SNAKE_snake.png");
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/667105474176352274/start.png");
     height: 90%; 
     background-position: center;
     background-repeat: no-repeat;
@@ -47,7 +47,7 @@
   }
 
   .backgroundgamevictory{
-    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666030344130134036/start_scherm_DRUNK_SNAKE_snake.png");
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/667109214443012107/victory1.png");
     height: 90%; 
     background-position: center;
     background-repeat: no-repeat;
@@ -55,7 +55,7 @@
   }
 
   .backgroundgameover{
-    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666030344130134036/start_scherm_DRUNK_SNAKE_snake.png");
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666026333721329664/game_over_the_best.png");
     height: 90%; 
     background-position: center;
     background-repeat: no-repeat;

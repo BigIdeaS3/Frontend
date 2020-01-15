@@ -9,6 +9,12 @@ var ctx = mycanvas.getContext('2d');
 var snakePlayers = [];
 
 var food = {x: -1, y: -1};
+
+// var background = new Image(); //playfield screen
+// background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
+// var backgroundGameOver = new Image(); //gameover screen
+// backgroundGameOver.src = "https://media.discordapp.net/attachments/605158966455959572/656272876239978546/game_over_the_best.png";
+
     
 var url = new URL(window.location);
 var gameId = url.searchParams.get("id")
