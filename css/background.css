@@ -16,7 +16,7 @@
 
   .backgroundlobby{
     background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/667098916977639443/lobby.png");
-    height: 90%; 
+    height: 60%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,7 +24,7 @@
 
   .backgroundfindlobby{
     background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/667098915274752000/find_lobby.png");
-    height: 90%; 
+    height: 60%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,6 +57,14 @@
   .backgroundgameover{
     background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/666026333721329664/game_over_the_best.png");
     height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .backgroundgame2{
+    background-image: url("https://cdn.discordapp.com/attachments/605158966455959572/668088347087863808/WOOD_1.2.png");
+    height: 70%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
