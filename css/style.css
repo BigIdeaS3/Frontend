@@ -44,8 +44,12 @@
     }
 
     .game {
-      margin: 8%;
+      margin: 7.5%;
       margin-left: 33%;
+    }
+
+    .whitetext{
+        color: white;
     }
 
     input[type=text],[type=password], select, textarea {
@@ -75,7 +79,7 @@
       text-align: center;
     }
     
-    .lobbytable tr:nth-child(even){background-color: #f2f2f2;}
+    .lobbytable tr {background-color: #f2f2f2;}
        
     .lobbytable tr:hover {background-color: #ddd;}
     
