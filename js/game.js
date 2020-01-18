@@ -10,10 +10,10 @@ var snakePlayers = [];
 
 var food = {x: -1, y: -1};
 
-// var background = new Image(); //playfield screen
-// background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
-// var backgroundGameOver = new Image(); //gameover screen
-// backgroundGameOver.src = "https://media.discordapp.net/attachments/605158966455959572/656272876239978546/game_over_the_best.png";
+var background = new Image(); //playfield screen
+background.src = "https://media.discordapp.net/attachments/605158966455959572/654823353139462144/abi-merrell-bar-background.png?width=782&height=676";
+var backgroundGameOver = new Image(); //gameover screen
+backgroundGameOver.src = "https://media.discordapp.net/attachments/605158966455959572/656272876239978546/game_over_the_best.png";
 
     
 var url = new URL(window.location);
@@ -44,6 +44,8 @@ stompClient.connect({}, function(frame) {
         } else if (msg.type == "SETFOOD" || msg.type == "GETFOOD") {
             food = msg.message;
             drawFood();
+        } else if (msg.type == "PATHFIND"){
+            alert(JSON.stringify(msg.message))
         }
     })
     
@@ -74,7 +76,7 @@ function move() {
     if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision({snakeX, snakeY})) {
         //restart game
         btn.removeAttribute('disabled', true);
-        ctx.drawImage(backgroundgameover,0,0,w,h);
+        ctx.drawImage(backgroundGameOver,0,0,w,h);
         // ctx.clearRect(0,0,w,h);
         gameLoop = clearInterval(gameLoop);
         return;          
@@ -82,6 +84,7 @@ function move() {
         var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
         createFood(); //Create new food
         drawFood(); 
+        PathFind();
     }
 
     else {
@@ -98,10 +101,14 @@ function move() {
     stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"DRAW",'message':player}))
 }
 
+function PathFind() {
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var player = snakePlayers.find(x => x.player.username == user.username);
+    stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"PATHFIND",'message':player}))
+    alert();
+}
+
 function checkCollision(location) {
-
-    //TODO: FIX COLLISION
-
     for (let i = 0; i < snakePlayers.length; i++) {
         const snake = snakePlayers[i].snake;
         for (let j = 0; j < snake.length; j++) {
@@ -132,7 +139,8 @@ function drawBackground() {
 function createFood() {
     var f = {
         x: Math.floor((Math.random() * 30) + 1),
-        y: Math.floor((Math.random() * 30) + 1)
+        y: Math.floor((Math.random() * 30) + 1),
+        type: "FOOD"
     }
 
 
@@ -177,7 +185,7 @@ function getSnakePlayerByUsername(username) {
 
 function init() {
     createFood();
-    gameLoop = setInterval(move, 1000)
+    gameLoop = setInterval(move, 100)
 }
 
 document.onkeydown = function(event) {
