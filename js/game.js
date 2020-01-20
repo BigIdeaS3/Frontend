@@ -20,7 +20,16 @@ var url = new URL(window.location);
 var gameId = url.searchParams.get("id")
 
 btn.addEventListener("click", function(){
-    var snakePlayer = {"player": sessionStorage.getItem("user"),"snake": [{"x":3,"y":0},{"x":2,"y":0},{"x":1,"y":0},{"x":0,"y":0}]}
+    
+    var f = {
+        x: Math.floor((Math.random() * 30) + 1),
+        y: Math.floor((Math.random() * 30) + 1),
+        type: "FOOD"
+    }
+
+    stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"SETFOOD",'message':f}))
+
+    var snakePlayer = {"player": sessionStorage.getItem("user"),"snake": [{"x":3,"y":0,"type":"SNAKEBODY"},{"x":2,"y":0,"type":"SNAKEBODY"},{"x":1,"y":0,"type":"SNAKEBODY"},{"x":0,"y":0,"type":"SNAKEBODY"}]}
     stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"STARTGAME",'message':snakePlayer}))
 });
 
@@ -45,7 +54,7 @@ stompClient.connect({}, function(frame) {
             food = msg.message;
             drawFood();
         } else if (msg.type == "PATHFIND"){
-            alert(JSON.stringify(msg.message))
+            // alert(JSON.stringify(msg.message))
         }
     })
     
@@ -105,7 +114,7 @@ function PathFind() {
     var user = JSON.parse(sessionStorage.getItem("user"));
     var player = snakePlayers.find(x => x.player.username == user.username);
     stompClient.send('/app/game/'+gameId,{},JSON.stringify({'type':"PATHFIND",'message':player}))
-    alert();
+    // alert();
 }
 
 function checkCollision(location) {
@@ -184,7 +193,7 @@ function getSnakePlayerByUsername(username) {
 }
 
 function init() {
-    createFood();
+    clearInterval(gameLoop)
     gameLoop = setInterval(move, 100)
 }
 

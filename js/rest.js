@@ -20,8 +20,6 @@ async function login() {
     var result = await call.json();
     if (result.username !== null && result.email !== null && result.username !== undefined && result.email !== undefined){
 
-        alert(JSON.stringify(result))
-
         sessionStorage.setItem("user", JSON.stringify(result))
 
         name = result.username;        
